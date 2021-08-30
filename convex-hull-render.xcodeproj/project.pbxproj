@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		88844FD926DD082A00AE2DE7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88844FD826DD082A00AE2DE7 /* main.cpp */; };
+		88844FE226DD0B5E00AE2DE7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88844FE126DD0B5E00AE2DE7 /* OpenGL.framework */; };
+		88844FE426DD0B9100AE2DE7 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88844FE326DD0B9100AE2DE7 /* libglfw.3.3.dylib */; };
+		88844FE626DD0BD200AE2DE7 /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88844FE526DD0BD100AE2DE7 /* libGLEW.2.2.0.dylib */; };
+		88844FED26DD0CF000AE2DE7 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 88844FEC26DD0CF000AE2DE7 /* glad.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		88844FD526DD082A00AE2DE7 /* convex-hull-render */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "convex-hull-render"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88844FD826DD082A00AE2DE7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		88844FE126DD0B5E00AE2DE7 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		88844FE326DD0B9100AE2DE7 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		88844FE526DD0BD100AE2DE7 /* libGLEW.2.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.2.0.dylib; path = ../../../../usr/local/Cellar/glew/2.2.0/lib/libGLEW.2.2.0.dylib; sourceTree = "<group>"; };
+		88844FEC26DD0CF000AE2DE7 /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +40,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88844FE626DD0BD200AE2DE7 /* libGLEW.2.2.0.dylib in Frameworks */,
+				88844FE426DD0B9100AE2DE7 /* libglfw.3.3.dylib in Frameworks */,
+				88844FE226DD0B5E00AE2DE7 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +54,7 @@
 			children = (
 				88844FD726DD082A00AE2DE7 /* convex-hull-render */,
 				88844FD626DD082A00AE2DE7 /* Products */,
+				88844FE026DD0B5D00AE2DE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +69,20 @@
 		88844FD726DD082A00AE2DE7 /* convex-hull-render */ = {
 			isa = PBXGroup;
 			children = (
+				88844FEC26DD0CF000AE2DE7 /* glad.c */,
 				88844FD826DD082A00AE2DE7 /* main.cpp */,
 			);
 			path = "convex-hull-render";
+			sourceTree = "<group>";
+		};
+		88844FE026DD0B5D00AE2DE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88844FE526DD0BD100AE2DE7 /* libGLEW.2.2.0.dylib */,
+				88844FE326DD0B9100AE2DE7 /* libglfw.3.3.dylib */,
+				88844FE126DD0B5E00AE2DE7 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88844FD926DD082A00AE2DE7 /* main.cpp in Sources */,
+				88844FED26DD0CF000AE2DE7 /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +200,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${glfw_header}",
+					"${glew_header}",
+					/usr/local/include,
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/usr/local/include,
+					"${glew_header}",
+					"${glfw_header}",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${glew_lib}",
+					"${glfw_lib}",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -229,6 +267,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${glfw_header}",
+					"${glew_header}",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"${glew_lib}",
+					"${glfw_lib}",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -240,6 +287,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.3.2/lib,
+					/usr/local/Cellar/glew/2.2.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,6 +300,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw/3.3.2/lib,
+					/usr/local/Cellar/glew/2.2.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
